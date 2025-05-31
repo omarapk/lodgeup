@@ -1,2 +1,3 @@
 <h1><%= @flat.title %></h1>
 <h2><%= @flat.description %></h2>
+<%= image_tag @flat.photo if @flat.photo.attached?%>

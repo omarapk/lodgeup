@@ -1,0 +1,14 @@
+<%= simple_form_for @flat do |f| %>
+  <%= f.input :title %>
+  <%= f.input :description %>
+  <%= f.input :location %>
+  <%= f.input :price %>
+  <%= f.input :availability_start,
+            as: :string,
+            input_html: { data: { controller: "datepicker" } } %>
+  <%= f.input :availibility_end,
+            as: :string,
+            input_html: { data: { controller: "datepicker" } } %>
+  <%= f.input :photo, as: :file %>
+  <%= f.submit "Post Flat" %>
+<% end %>
