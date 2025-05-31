@@ -1,6 +1,6 @@
 class FlatsController < ApplicationController
   before_action :set_flat, only: [:show, :edit, :update, :destroy]
-  before_action :authorize_user, only: [:show, :edit, :update, :destroy]
+  before_action :authorize_user, only: [:edit, :update, :destroy]
   skip_before_action :authenticate_user!, only: :index
 
   def index
@@ -51,6 +51,8 @@ class FlatsController < ApplicationController
   end
 
   def authorize_user
-    redirect_to flats_path unless @flat.user == current_user
+    unless @flat.user == current_user
+      render :unauthorized
+    end
   end
 end

@@ -1,5 +1,5 @@
 <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
-  <div class="card h-100">
+  <%= link_to flat_path(flat), class: "card h-100 text-decoration-none text-dark" do %>
     <% if flat.photo.attached? %>
       <%= image_tag flat.photo, class: "card-img-top" %>
     <% end %>
@@ -7,7 +7,6 @@
       <h5 class="card-title"><%= flat.title %></h5>
       <p class="card-text"><%= flat.description %></p>
       <p class="card-text"><strong>€<%= flat.price %></strong> per night</p>
-      <%= link_to "View", flat_path(flat), class: "btn btn-primary" %>
     </div>
-  </div>
+  <% end %>
 </div>

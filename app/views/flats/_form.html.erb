@@ -1,0 +1,46 @@
+<%= simple_form_for @flat, html: { class: "flat-form" } do |f| %>
+  <div class="form-group">
+    <%= f.label :title %>
+    <%= f.input :title, input_html: { class: "form-control" }, label: false %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :description %>
+    <%= f.input :description, as: :text, input_html: { class: "form-control", rows: 4 }, label: false %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :location %>
+    <%= f.input :location, input_html: { class: "form-control" }, label: false %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :price %>
+    <%= f.input :price, input_html: { class: "form-control" }, label: false %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :availability_start, "Availability Start" %>
+    <%= f.input :availability_start,
+                as: :string,
+                input_html: { class: "form-control", data: { controller: "datepicker" } },
+                label: false %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :availibility_end, "Availability End" %>
+    <%= f.input :availibility_end,
+                as: :string,
+                input_html: { class: "form-control", data: { controller: "datepicker" } },
+                label: false %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :photo %>
+    <%= f.input :photo, as: :file, input_html: { class: "form-control" }, label: false %>
+  </div>
+
+  <div class="form-group">
+    <%= f.submit "Post Flat", class: "btn-submit" %>
+  </div>
+<% end %>
