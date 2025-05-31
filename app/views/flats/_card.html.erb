@@ -1,8 +1,8 @@
-<div class="card h-100">
+<div class="card" style="width: 18rem;">
+  <%= image_tag flat.photo, class: 'card-img-top' if flat.photo.attached?%>
   <div class="card-body">
     <h5 class="card-title"><%= flat.title %></h5>
     <p class="card-text"><%= flat.description %></p>
-    <p class="card-text"><strong>€<%= flat.price %></strong> per night</p>
-    <%= link_to "View", flat_path(flat), class: "btn btn-primary" %>
+    <%= link_to "See details", flat_path(flat), class:"btn btn-primary"  %>
   </div>
 </div>
