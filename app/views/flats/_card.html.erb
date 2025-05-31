@@ -1,0 +1,8 @@
+<div class="card h-100">
+  <div class="card-body">
+    <h5 class="card-title"><%= flat.title %></h5>
+    <p class="card-text"><%= flat.description %></p>
+    <p class="card-text"><strong>€<%= flat.price %></strong> per night</p>
+    <%= link_to "View", flat_path(flat), class: "btn btn-primary" %>
+  </div>
+</div>

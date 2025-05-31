@@ -8,6 +8,7 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 require"date"
-User.create(email:"test@gmail.com", password:"123456", username:"test")
+User.create(email:"test@gmail.com", password:"123456", username:"testcccc")
 Flat.create(title:"test",description:'test', location:"test",price:100, availability_start: Date.today, availibility_end:Date.tomorrow, user_id:1)
 Booking.create(check_in:Date.today,check_out:Date.tomorrow,status:false,user_id:1,flat_id:1)
+Flat.create(title:"test",description:'test', location:"test",price:100, availability_start: Date.today, availibility_end:Date.tomorrow, user_id:1)
