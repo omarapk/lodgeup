@@ -8,7 +8,7 @@ class Flat < ApplicationRecord
   validates :price, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
   validates :availability_start, presence: true
   validates :availibility_end, presence: true
-
+  validate :availability_dates_valid
 
   private
 

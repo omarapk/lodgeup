@@ -2,6 +2,11 @@
   <h1>All Flats</h1>
   <%= link_to "New Flat", new_flat_path, class: "btn btn-success" %>
 </div>
-<% @flats.each do |flat| %>
-  <%= render 'card', flat: flat %>
-<% end %>
+
+<div class="container-fluid">
+  <div class="row">
+    <% @flats.each do |flat| %>
+      <%= render 'card', flat: flat %>
+    <% end %>
+  </div>
+</div>
