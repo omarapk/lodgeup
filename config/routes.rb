@@ -16,5 +16,4 @@ Rails.application.routes.draw do
     resources :bookings, only: [:create]
   end
   resources :bookings, only: [:index, :show]
-  get "proposals", to: "bookings#proposals", as: :booking_proposals
 end
