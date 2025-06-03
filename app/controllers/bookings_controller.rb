@@ -31,6 +31,12 @@ end
     redirect_to bookings_path
   end
 
+  def proposals
+    @proposals = Booking.joins(:flat)
+                        .where(status: "pending", flats: { user: current_user })
+                        .includes(:flat, :user)
+  end
+
   private
 
   def set_flat

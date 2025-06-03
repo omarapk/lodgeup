@@ -11,9 +11,12 @@
           <li class="nav-item active">
             <%= link_to "Home", flats_path, class: "nav-link" %>
           </li>
-          <li class="nav-item">
-            <%= link_to "Messages", "#", class: "nav-link" %>
-          </li>
+          <% if current_user && current_user.flats.any? %>
+            <li class="nav-item">
+               <%= link_to "Requests", booking_requests_path, class: "nav-link" %>
+           </li>
+          <% end %>
+
           <li class="nav-item dropdown">
           <a href="#" class="avatar" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar", alt: "dropdown menu" %>
