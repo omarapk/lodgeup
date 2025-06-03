@@ -10,11 +10,24 @@ class Flat < ApplicationRecord
   validates :availibility_end, presence: true
   validate :availability_dates_valid
 
-  private
 
   def availability_dates_valid
     if availability_start && availibility_end && availability_start >= availibility_end
       errors.add(:availability_start, "must be before availability end")
     end
+  end
+
+  def available_between?(start_date, end_date)
+    bookings.confirmed.none? do |booking|
+      booking.check_in < end_date && start_date < booking.check_out
+    end
+  end
+
+  def update_availability_dates
+    confirmed_bookings = bookings.confirmed.order(:check_in)
+    if confirmed_bookings.any?
+      self.availability_start = [availability_start, confirmed_bookings.last.check_out].max
+    end
+    save!
   end
 end

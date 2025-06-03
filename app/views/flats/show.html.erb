@@ -26,6 +26,19 @@
           <%= link_to "Delete", flat_path(@flat), class: "btn btn-danger flex-grow-1", data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to delete this flat?" } %>
         </div>
       <% end %>
+
+      <h3>Book this flat</h3>
+      <%= form_with(model: [@flat, @booking], local: true) do |f| %>
+        <div class="mb-3">
+          <%= f.label :check_in, "Check-in date" %>
+          <%= f.date_field :check_in, min: @flat.availability_start.try(:strftime, "%Y-%m-%d"), max: @flat.availibility_end.try(:strftime, "%Y-%m-%d"), class: "form-control" %>
+        </div>
+        <div class="mb-3">
+          <%= f.label :check_out, "Check-out date" %>
+          <%= f.date_field :check_out, min: @flat.availability_start.try(:strftime, "%Y-%m-%d"), max: @flat.availibility_end.try(:strftime, "%Y-%m-%d"), class: "form-control" %>
+        </div>
+        <%= f.submit "Book now", class: "btn btn-primary" %>
+      <% end %>
     </div>
   </div>
 </div>

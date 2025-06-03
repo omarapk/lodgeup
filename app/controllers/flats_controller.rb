@@ -1,5 +1,5 @@
 class FlatsController < ApplicationController
-  before_action :set_flat, only: [:show, :edit, :update, :destroy]
+  before_action :set_flat, only: [:show, :edit, :update, :destroy, :bookings]
   before_action :authorize_user, only: [:edit, :update, :destroy]
   skip_before_action :authenticate_user!, only: :index
 
@@ -8,6 +8,7 @@ class FlatsController < ApplicationController
   end
 
   def show
+    @booking = Booking.new
   end
 
   def new
@@ -38,6 +39,11 @@ class FlatsController < ApplicationController
   def destroy
     @flat.destroy
     redirect_to flats_path
+  end
+
+  def bookings
+    @bookings = @flat.bookings.order(created_at: :desc)
+    render :unauthorized unless @flat.user == current_user
   end
 
   private

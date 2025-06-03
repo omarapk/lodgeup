@@ -13,16 +13,18 @@ class BookingsController < ApplicationController
     @booking = @flat.bookings.new
   end
 
-  def create
-    @booking = @flat.bookings.new(booking_params)
-    @booking.user = current_user
+def create
+  @flat = Flat.find(params[:flat_id])
+  @booking = @flat.bookings.new(booking_params)
+  @booking.user = current_user
 
-    if @booking.save
-      redirect_to @booking
-    else
-      render :new
-    end
+  if @booking.save
+    @flat.update_availability_dates
+    redirect_to @flat, notice: "Booking created successfully"
+  else
+    render "flats/show", status: :unprocessable_entity
   end
+end
 
   def destroy
     @booking.destroy
