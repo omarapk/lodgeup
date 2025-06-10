@@ -1,30 +1,47 @@
-<h2>Bookings You Made</h2>
-<% if @bookings.any? %>
-  <% @bookings.each do |booking| %>
-    <p>
-      Flat: <%= booking.flat.title %><br>
-      From: <%= booking.check_in %> to <%= booking.check_out %><br>
-      Status: <%= booking.status %>
-    </p>
+<div id="bookings-page">
+  <h2>Bookings You Made</h2>
+  <% if @bookings.any? %>
+    <% @bookings.each do |booking| %>
+      <div class="booking-card">
+        <div class="card-header">
+          <span class="flat-title"><%= booking.flat.title %></span>
+        </div>
+        <div class="card-body">
+          <p><strong>Dates:</strong> <%= booking.check_in %> → <%= booking.check_out %></p>
+          <p><strong>Status:</strong> <span class="status <%= booking.status %>"><%= booking.status.capitalize %></span></p>
+        </div>
+      </div>
+    <% end %>
+  <% else %>
+    <p class="empty-message">You haven't made any bookings.</p>
   <% end %>
-<% else %>
-  <p>You haven't made any bookings.</p>
-<% end %>
 
-<hr>
+  <hr>
 
-<h2>Booking Requests You Received</h2>
-<% if @booking_requests.any? %>
-  <% @booking_requests.each do |booking| %>
-    <p>
-      Flat: <%= booking.flat.title %><br>
-      From: <%= booking.check_in %> to <%= booking.check_out %><br>
-      Guest: <%= booking.user.email %><br>
-     <%= button_to "Accept",  booking_path(booking), method: :patch, params: { booking: { status: "confirmed" } }, form_class: "inline-form" %>
-     <%= button_to "Decline", booking_path(booking), method: :patch, params: { booking: { status: "declined" } }, form_class: "inline-form" %>
-
-    </p>
+  <h2>Booking Requests You Received</h2>
+  <% if @booking_requests.any? %>
+    <% @booking_requests.each do |booking| %>
+      <div class="booking-card">
+        <div class="card-header">
+          <span class="flat-title"><%= booking.flat.title %></span>
+        </div>
+        <div class="card-body">
+          <p><strong>Dates:</strong> <%= booking.check_in %> → <%= booking.check_out %></p>
+          <p><strong>Guest:</strong> <%= booking.user.email %></p>
+        </div>
+        <div class="card-actions">
+          <%= button_to "Accept", booking_path(booking), method: :patch,
+                params: { booking: { status: "confirmed" } },
+                form_class: "inline-form",
+                class: "btn btn-accept" %>
+          <%= button_to "Decline", booking_path(booking), method: :patch,
+                params: { booking: { status: "declined" } },
+                form_class: "inline-form",
+                class: "btn btn-decline" %>
+        </div>
+      </div>
+    <% end %>
+  <% else %>
+    <p class="empty-message">You don't have any booking requests.</p>
   <% end %>
-<% else %>
-  <p>You don't have any booking requests.</p>
-<%end%>
+</div>
