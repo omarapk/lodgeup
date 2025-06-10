@@ -16,7 +16,7 @@ Flat.destroy_all
 
 puts "Creating flats for user with ID 4..."
 
-user = User.find(4)
+user = User.find(1)
 
 image_url = "https://images.unsplash.com/photo-1600585154340-be6161a56a0c"
 

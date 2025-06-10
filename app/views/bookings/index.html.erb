@@ -1,0 +1,32 @@
+<h2>Bookings You Made</h2>
+<% if @bookings.any? %>
+  <% @bookings.each do |booking| %>
+    <p>
+      Flat: <%= booking.flat.title %><br>
+      From: <%= booking.check_in %> to <%= booking.check_out %><br>
+      Status: <%= booking.status %>
+    </p>
+  <% end %>
+<% else %>
+  <p>You haven't made any bookings.</p>
+<% end %>
+
+<hr>
+
+<h2>Booking Requests You Received</h2>
+<% if @booking_requests.any? %>
+  <% @booking_requests.each do |booking| %>
+    <p>
+      Flat: <%= booking.flat.title %><br>
+      From: <%= booking.check_in %> to <%= booking.check_out %><br>
+      Guest: <%= booking.user.email %><br>
+      <%= link_to "Accept", booking_path(booking, booking: { status: "confirmed" }), method: :patch %> |
+      <%= link_to "Decline", booking_path(booking, booking: { status: "declined" }), method: :patch %>
+    </p>
+  <% end %>
+<% else %>
+  <p>You don't have any booking requests.</p>
+<%end%>
+    
+
+

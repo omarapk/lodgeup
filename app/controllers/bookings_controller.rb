@@ -1,9 +1,10 @@
 class BookingsController < ApplicationController
   before_action :set_flat, only: [:new, :create]
-  before_action :set_booking, only: [:show, :destroy]
+  before_action :set_booking, only: [:show, :destroy,:update]
   before_action :authorize_user, only: [:show, :destroy]
   def index
     @bookings = current_user.bookings.includes(:flat)
+    @booking_requests = Booking.joins(:flat).where(flats: { user_id: current_user.id }, status:"pending")
   end
 
   def show
@@ -25,6 +26,15 @@ def create
     render "flats/show", status: :unprocessable_entity
   end
 end
+
+  def update
+    if @booking.flat.user == current_user && @booking.update(booking_params)
+       @booking.flat.update_availability_dates if @booking.confirmed?
+      redirect_to bookings_path 
+    else 
+      redirect_to bookings_path, alert: "failed"
+    end
+  end
 
   def destroy
     @booking.destroy
