@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Your App</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag "application", media: "all" %>
+  </head>
+
+  <body>
+    <div id="devise-wrapper">
+      <div class="container">
+        <%= yield %>
+      </div>
+    </div>
+  </body>
+</html>

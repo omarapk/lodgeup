@@ -1,0 +1,131 @@
+#devise-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: #f9f9f9;
+  padding: 2rem;
+
+  .container {
+    background: #fff;
+    padding: 2.5rem 2rem;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    width: 100%;
+    max-width: 400px;
+    font-family: 'Helvetica Neue', sans-serif;
+  }
+
+  h2, h3, h4 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+
+    .field {
+      margin-bottom: 1.2rem;
+
+      label {
+        display: block;
+        margin-bottom: 0.4rem;
+        font-weight: 500;
+        color: #444;
+      }
+
+      input[type="email"],
+      input[type="password"],
+      input[type="text"] {
+        width: 100%;
+        padding: 0.65rem;
+        border-radius: 8px;
+        border: 1px solid #ccc;
+        transition: border-color 0.2s;
+
+        &:focus {
+          border-color: #3498db;
+          outline: none;
+        }
+      }
+    }
+
+    .actions {
+      text-align: center;
+      margin-top: 1rem;
+
+      input[type="submit"],
+      button[type="submit"] {
+        background: #3498db;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        padding: 0.75rem 1.5rem;
+        font-weight: 600;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: background-color 0.2s;
+
+        &:hover {
+          background: #2980b9;
+        }
+      }
+    }
+  }
+
+  input[type="submit"],
+  button[type="submit"] {
+    background: #3498db;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 0.75rem 1.5rem;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.2s;
+
+    &:hover {
+      background: #2980b9;
+    }
+  }
+
+  .links {
+    margin-top: 1.5rem;
+    text-align: center;
+
+    a {
+      color: #3498db;
+      text-decoration: none;
+      font-size: 0.9rem;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  .alert,
+  .notice {
+    text-align: center;
+    margin-bottom: 1rem;
+    padding: 0.8rem;
+    border-radius: 8px;
+    font-size: 0.9rem;
+  }
+
+  .alert {
+    background-color: #fdecea;
+    border: 1px solid #f5c2c7;
+    color: #b02a37;
+  }
+
+  .notice {
+    background-color: #eafaf1;
+    border: 1px solid #b5e3c8;
+    color: #197642;
+  }
+}
