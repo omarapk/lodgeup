@@ -8,6 +8,11 @@ class Booking < ApplicationRecord
   validate :flat_must_be_available
   enum status: { pending: "pending", confirmed: "confirmed", declined: "declined" }
 
+  def total_price
+    number_of_nights = (check_out - check_in).to_i
+    number_of_nights * flat.price
+  end
+
 
   protected
 

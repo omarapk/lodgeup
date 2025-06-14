@@ -8,6 +8,7 @@
         </div>
         <div class="card-body">
           <p><strong>Dates:</strong> <%= booking.check_in %> → <%= booking.check_out %></p>
+          <p><strong>Total:</strong> $<%= booking.total_price %></p>
           <p><strong>Status:</strong> <span class="status <%= booking.status %>"><%= booking.status.capitalize %></span></p>
         </div>
       </div>
@@ -27,6 +28,7 @@
         </div>
         <div class="card-body">
           <p><strong>Dates:</strong> <%= booking.check_in %> → <%= booking.check_out %></p>
+          <p><strong>Total:</strong> $<%= booking.total_price %></p>
           <p><strong>Guest:</strong> <%= booking.user.email %></p>
         </div>
         <div class="card-actions">
