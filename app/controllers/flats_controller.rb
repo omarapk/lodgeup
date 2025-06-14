@@ -5,6 +5,10 @@ class FlatsController < ApplicationController
 
   def index
     @flats = Flat.all
+    if params[:query].present?
+      sql_subquery = "title ILIKE :query OR description ILIKE :query OR location ILIKE :query"
+      @flats = @flats.where(sql_subquery, query: "%#{params[:query]}%")
+    end
   end
 
   def show
